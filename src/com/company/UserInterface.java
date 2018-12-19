@@ -10,6 +10,7 @@ public class UserInterface extends JFrame {
     public UserInterface(Integer width, Integer height) {
         super("Pong by Hubert Suprunowicz");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         setSize(width,height);
         background = getContentPane();
         buildUI();
@@ -20,6 +21,7 @@ public class UserInterface extends JFrame {
     public UserInterface() {
         super("Pong by Hubert Suprunowicz");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
 
         /* Set app proportional to the user screen resolution */
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -47,6 +49,7 @@ public class UserInterface extends JFrame {
         JButton endBtn = new JButton("END");
         JButton stopBtn = new JButton("STOP");
 
+        
         header.add(startBtn);
         header.add(endBtn);
         header.add(stopBtn);

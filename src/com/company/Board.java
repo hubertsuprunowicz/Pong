@@ -13,7 +13,8 @@ public class Board extends JPanel {
 
     Board() {
         super();
-        ball = new Ball(200, 200, 50, 10,10, Color.WHITE);
+        Random randomDY = new Random();
+        ball = new Ball(200, 200, 50, 10,randomDY.nextInt(9)+1, Color.WHITE);
         time = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,9 +33,8 @@ public class Board extends JPanel {
         Random rand = new Random();
 
         ball.draw(g);
-        for(int i=0; i<100; i++) {
-            time.start();
-        }
+        time.start();
+
 
 //        Kolo k = new Kolo(200,200,100,0,1,Color.BLACK);
 //        k.draw(g);
