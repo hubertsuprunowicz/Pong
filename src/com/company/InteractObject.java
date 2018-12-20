@@ -2,7 +2,7 @@ package com.company;
 
 import java.awt.*;
 
-public class InteractObject {
+public class InteractObject{
     protected Integer x,y;
     protected Integer sizeX, sizeY;
     protected Integer dx, dy;
@@ -18,21 +18,38 @@ public class InteractObject {
         this.c = c;
     }
 
+    public InteractObject(Integer x, Integer y, Color c){
+        this.x = x;
+        this.y = y;
+        this.sizeX = 0;
+        this.sizeY = 0;
+        this.dx = 0;
+        this.dy = 0;
+        this.c = c;
+    }
+
     public void draw(Graphics g){
         g.setColor(c);
     }
 
-    final public void move(Integer width, Integer height) {
-        x += dx;
-        y += dy;
+    public void move(Integer boardWidth, Integer boardHeight) {
+       //
+    }
 
-        if( x >= width-sizeX || x <= 0 ) {
-            dx = -dx;
-        }
+    public Integer getX() {
+        return this.x;
+    }
 
-        if( y >= height-sizeY || y <= 0) {
-            dy = -dy;
-        }
+    public Integer getY() {
+        return this.y;
+    }
+
+    public void setX(Integer x) {
+        this.x = x;
+    }
+
+    public void setY(Integer y) {
+        this.y = y;
     }
 
     public Integer getDx() {

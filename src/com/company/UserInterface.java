@@ -47,31 +47,27 @@ public class UserInterface extends JFrame {
         content.add(header, BorderLayout.NORTH);
         content.add(board, BorderLayout.CENTER);
 
+        //JOptionPane.showMessageDialog(null, dim.width);
+
         JButton startBtn = new JButton("START");
         startBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                /* add values(1,10) to dx & dy */
-                board.add("ball");
-
-                /* remember last position after pause */
-                board.ball.setDx(board.ball.getDx());
-                board.ball.setDy(board.ball.getDy());
+                board.startGame();
             }
         });
 
         JButton endBtn = new JButton("END");
         endBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                /* clear ball from board */
+                board.add("ball");
+                board.add("player");
             }
         });
 
         JButton stopBtn = new JButton("STOP");
         stopBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                /* add values(0,0) to dx & dy */
-                board.ball.setDx(0);
-                board.ball.setDy(0);
+                board.stopGame();
             }
         });
 
