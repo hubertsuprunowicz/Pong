@@ -35,5 +35,21 @@ public class InteractObject {
         }
     }
 
+    public Integer getDx() {
+        return this.dx;
+    }
+
+    public Integer getDy() {
+        return this.dy;
+    }
+
+    public void setDx(Integer dx) {
+        this.dx = dx;
+    }
+
+    public void setDy(Integer dy) {
+        this.dy = dy;
+    }
+
 
 }

@@ -8,13 +8,37 @@ import java.util.Random;
 
 public class Board extends JPanel {
     private Timer time;
-    public Ball ball;
+    protected Ball ball;
     protected Integer width, height;
 
     Board() {
         super();
-        Random randomDY = new Random();
-        ball = new Ball(200, 200, 50, 10,randomDY.nextInt(9)+1, Color.WHITE);
+
+        ball = new Ball(200, 200, 30, 0,0, Color.WHITE);
+        time = new Timer(20, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ball.move(width,height);
+                repaint();
+            }
+        });
+
+    }
+
+
+    public void add(String item) {
+        Random random = new Random();
+        switch (item) {
+            case "ball":
+                ball = new Ball(200, 200, 30, 10,random.nextInt(9)+1, Color.WHITE);
+                break;
+            case "player":
+                break;
+
+                default:
+                    break;
+        }
+
         time = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -29,8 +53,6 @@ public class Board extends JPanel {
         super.paintComponent(g);
         this.width = getWidth();
         this.height = getHeight();
-
-        Random rand = new Random();
 
         ball.draw(g);
         time.start();
