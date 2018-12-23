@@ -10,9 +10,6 @@ import java.awt.event.KeyEvent;
 
 public class UserInterface extends JFrame  {
     private Container content;
-    private Board board;
-
-    //JOptionPane.showMessageDialog(null, height);
 
     public UserInterface(Integer width, Integer height) {
         super("Pong by Hubert Suprunowicz");
@@ -35,45 +32,24 @@ public class UserInterface extends JFrame  {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setSize((int)screenSize.getWidth(), (int)screenSize.getHeight() - 35);
 
-        //addKeyListener(this);
-        //addKeyListener(new Move());
-        setFocusable(true);
-
         content = getContentPane();
         buildUI();
 
         setVisible(true);
     }
 
-
-
     private void buildUI() {
 
         content.setLayout(new BorderLayout());
 
         JPanel userPanel = new JPanel();
-        board = new Board();
-
-//        InputMap im = board.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-//        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0, false), "move");
-//
-//        // Actions TO DO
-//        ActionMap ap = board.getActionMap();
-//        ap.put("move", new AbstractAction() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                System.out.println("KEY BINDING");
-//            }
-//        });
+        Board board = new Board();
 
         userPanel.setBackground(Color.GRAY);
         board.setBackground(Color.BLACK);
 
-
         content.add(userPanel, BorderLayout.NORTH);
         content.add(board, BorderLayout.CENTER);
-
-
 
         JButton startBtn = new JButton("START");
         startBtn.addActionListener(new ActionListener() {
@@ -96,7 +72,6 @@ public class UserInterface extends JFrame  {
                 board.stopGame();
             }
         });
-
 
         userPanel.add(startBtn);
         userPanel.add(endBtn);

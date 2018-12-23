@@ -1,16 +1,18 @@
 package com.company;
 
 import java.awt.*;
-import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.Objects;
 
 public class Board extends JPanel{
     private Timer time;
     private Ball ball;
     private Player player;
+
+    private Integer playerY;
 
     /* get resolution from UI class*/
     private final Integer width = 1904;
@@ -77,12 +79,13 @@ public class Board extends JPanel{
     }
 
     public void stopGame() {
+        this.playerY = player.getY();
         time.stop();
     }
 
     public void startGame() {
-        super.grabFocus();
         time.start();
+        player.setY( Objects.requireNonNullElse(this.playerY, player.getY()) );
     }
 
     @Override

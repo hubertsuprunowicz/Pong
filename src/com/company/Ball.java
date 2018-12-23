@@ -18,7 +18,7 @@ public class Ball extends InteractObject {
 
     /* Add player object */
     @Override
-    public void move(Integer boardWidth, Integer boardHeight, Integer dx, Integer dy) {
+    public void move(Integer boardWidth, Integer boardHeight, Integer _dx, Integer _dy) {
         x += dx;
         y += dy;
 
@@ -29,6 +29,8 @@ public class Ball extends InteractObject {
         if( y >= boardHeight-sizeY || y <= 0) {
             dy = -dy;
         }
+
+
     }
 
     @Override
