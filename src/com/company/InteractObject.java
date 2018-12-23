@@ -4,15 +4,15 @@ import java.awt.*;
 
 public abstract class InteractObject{
     protected Integer x,y;
-    protected Integer sizeX, sizeY;
+    protected Integer objWidth, objHeight;
     protected Integer dx, dy;
     protected Color c;
 
-    public InteractObject(Integer x, Integer y, Integer sizeX, Integer sizeY, Integer dx, Integer dy, Color c){
+    public InteractObject(Integer x, Integer y, Integer objWidth, Integer objHeight, Integer dx, Integer dy, Color c){
         this.x = x;
         this.y = y;
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
+        this.objWidth = objWidth;
+        this.objHeight = objHeight;
         this.dx = dx;
         this.dy = dy;
         this.c = c;
@@ -21,8 +21,8 @@ public abstract class InteractObject{
     public InteractObject(Integer x, Integer y, Color c){
         this.x = x;
         this.y = y;
-        this.sizeX = 0;
-        this.sizeY = 0;
+        this.objWidth = 0;
+        this.objHeight = 0;
         this.dx = 0;
         this.dy = 0;
         this.c = c;
@@ -32,7 +32,7 @@ public abstract class InteractObject{
         g.setColor(c);
     }
 
-    public abstract void move(Integer boardWidth, Integer boardHeight, Integer dx, Integer dy);
+    public abstract void move(Integer boardWidth, Integer boardHeight, Integer dx, Integer dy, Integer pX, Integer pY);
 
     public Integer getX() { return this.x; }
     public Integer getY() { return this.y; }

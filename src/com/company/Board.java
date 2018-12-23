@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.Objects;
 
-public class Board extends JPanel{
+public class Board extends JPanel {
     private Timer time;
     private Ball ball;
     private Player player;
@@ -49,8 +49,8 @@ public class Board extends JPanel{
         time = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ball.move(width, height, 10, 10);
-                player.move(width, height, 0, 10);
+                ball.move(width, height, 10, 10, player.getX(), player.getY());
+                player.move(width, height, 0, 10,0, 0);
                 repaint();
             }
         });
@@ -95,5 +95,4 @@ public class Board extends JPanel{
         player.draw(g);
     }
 
-
-} // END CLASS
+}

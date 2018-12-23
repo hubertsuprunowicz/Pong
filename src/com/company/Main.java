@@ -7,11 +7,5 @@ public class Main {
         // CHANGE NAME TO GAME or PONG
         new UserInterface();
 
-        /*
-        Add class Board
-        and method start()
-         */
-
-
     }
 }
