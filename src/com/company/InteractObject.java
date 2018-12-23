@@ -2,7 +2,7 @@ package com.company;
 
 import java.awt.*;
 
-public abstract class InteractObject{
+public abstract class InteractObject implements SizeObject {
     protected Integer x,y;
     protected Integer objWidth, objHeight;
     protected Integer dx, dy;

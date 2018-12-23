@@ -5,9 +5,6 @@ import java.awt.*;
 public class Ball extends InteractObject {
 
     // Not final due to future implementation of powers(change height)
-    private Integer racketWidth = 30;
-    private Integer racketHeight= 100;
-
 
     public Ball(Integer x, Integer y, Integer objWidth, Integer objHeight, Integer dx, Integer dy, Color c) {
         super(x,y,objWidth,objHeight,dx,dy,c);
@@ -33,9 +30,10 @@ public class Ball extends InteractObject {
 
         // Colliding with Player:
         // Right side of racket
-        if(     x-objWidth/2 <= playerX+racketWidth/2 &&
-                y-objHeight/2 <= playerY+racketHeight/2 &&
-                y-objHeight/2 >= playerY-racketHeight/2)
+        if(     x - (objWidth/2) <= playerX + (SizeObject.RACKET_WIDTH/2) &&
+                x - (objWidth/2) <= playerX - (SizeObject.RACKET_WIDTH/2) &&
+                y - (objHeight/2) <= playerY + (SizeObject.RACKET_HEIGHT/2) &&
+                y - (objHeight/2) >= playerY - (SizeObject.RACKET_HEIGHT/2))
         { dx = -dx; }
 
     }
