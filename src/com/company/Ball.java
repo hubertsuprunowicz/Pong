@@ -16,8 +16,9 @@ public class Ball extends InteractObject {
         this.sizeY = 35;
     }
 
+    /* Add player object */
     @Override
-    public void move(Integer boardWidth, Integer boardHeight) {
+    public void move(Integer boardWidth, Integer boardHeight, Integer dx, Integer dy) {
         x += dx;
         y += dy;
 

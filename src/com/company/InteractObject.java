@@ -32,7 +32,7 @@ public class InteractObject{
         g.setColor(c);
     }
 
-    public void move(Integer boardWidth, Integer boardHeight) {
+    public void move(Integer boardWidth, Integer boardHeight, Integer dx, Integer dy) {
        //
     }
 
