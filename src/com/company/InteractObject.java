@@ -8,7 +8,7 @@ public abstract class InteractObject implements SizeObject {
     protected Integer dx, dy;
     protected Color c;
 
-    public InteractObject(Integer x, Integer y, Integer objWidth, Integer objHeight, Integer dx, Integer dy, Color c){
+    public InteractObject(Integer x, Integer y, Integer objWidth, Integer objHeight, Integer dx, Integer dy, Color c) {
         this.x = x;
         this.y = y;
         this.objWidth = objWidth;
@@ -18,7 +18,7 @@ public abstract class InteractObject implements SizeObject {
         this.c = c;
     }
 
-    public InteractObject(Integer x, Integer y, Color c){
+    public InteractObject(Integer x, Integer y, Color c) {
         this.x = x;
         this.y = y;
         this.objWidth = 0;
@@ -28,9 +28,7 @@ public abstract class InteractObject implements SizeObject {
         this.c = c;
     }
 
-    public void draw(Graphics g){
-        g.setColor(c);
-    }
+    public void draw(Graphics g){ g.setColor(c); }
 
     public abstract void move(Integer boardWidth, Integer boardHeight, Integer dx, Integer dy, Integer pX, Integer pY);
 

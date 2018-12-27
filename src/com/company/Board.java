@@ -7,23 +7,27 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.Objects;
 
-public class Board extends JPanel {
+public class Board extends JPanel implements SizeObject {
     private Timer time;
     private Ball ball;
     private Player player;
+    private Player ai;
 
     private Integer playerY;
 
     /* get resolution from UI class*/
-    private final Integer width = 1904;
-    private final Integer height = 970;
-    private final Integer margin = 20;
+    private Integer width ;
+    private Integer height ;
 
-    Board() {
+    Board(Integer width, Integer height) {
         super();
 
-        ball = new Ball(width/2,height/2,35,35,10, 10, Color.WHITE);
-        player = new Player(margin ,height/2,30,100,0, 0, Color.WHITE);
+        this.height = height;
+        this.width = width;
+
+        ball = new Ball(width/2,height/2,BALL_WIDTH,BALL_HEIGHT,-2, 2, Color.RED);
+        player = new Player(10 ,height/2,RACKET_WIDTH,RACKET_HEIGHT,0, 0, Color.WHITE);
+        ai = new Player(width-10 ,height/2,RACKET_WIDTH,RACKET_HEIGHT,0, 0, Color.WHITE);
 
         // Binding Keys
         InputMap im = this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
@@ -45,13 +49,21 @@ public class Board extends JPanel {
             }
         });
 
-
         time = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ball.move(width, height, 10, 10, player.getX(), player.getY());
                 player.move(width, height, 0, 10,0, 0);
+                ai.move(width, height, 0, 10,0, 0);
                 repaint();
+
+                if(ball.leftWallCollide(width)) {
+                    endGame();
+                    ai.points++;
+                } else if(ball.rightWallCollide(width)) {
+                    endGame();
+                    player.points++;
+                }
             }
         });
     }
@@ -61,21 +73,22 @@ public class Board extends JPanel {
             case "ball":
                 ball.setX(width/2);
                 ball.setY(height/2);
-                repaint();
-                time.stop();
+               // repaint();
                 break;
             case "player":
-                player.setX(20);
+                player.setX(10);
                 player.setY(height/2);
+
+                ai.setX(width-10);
+                ai.setY(height/2);
+
                 repaint();
-                time.stop();
                 break;
 
                 default:
                     // TRY CATCH EXCEPTION
                     break;
         }
-
     }
 
     public void stopGame() {
@@ -88,11 +101,30 @@ public class Board extends JPanel {
         player.setY( Objects.requireNonNullElse(this.playerY, player.getY()) );
     }
 
+    public void endGame() {
+        add("player");
+        add("ball");
+        time.stop();
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+        // After rendering panel is getting minus 26 of initialised size
+        return new Dimension(this.width,this.height + 26);
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         ball.draw(g);
         player.draw(g);
+        ai.draw(g);
+        g.drawLine(width/2,0,width/2,height);
+        g.drawOval(width/2 - width/8, height/2 - height/4, width/4, height/2);
+
+        this.width = getWidth();
+        this.height = getHeight();
+
     }
 
 }
