@@ -10,6 +10,9 @@ public class Player extends InteractObject  {
     }
 
     public void move(Integer boardWidth, Integer boardHeight, Integer _dx, Integer _dy, Integer pX, Integer pY) {
+        // Here starts very complicated AI algorithm
+        if(pY != 0) y = pY;
+        // Here ends.
 
         if(y-objHeight/2 <= 0) { y = objHeight/2; } // Top
         else if(y >= boardHeight - objHeight/2) { y = boardHeight - objHeight/2; } // Bottom

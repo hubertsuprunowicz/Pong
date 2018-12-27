@@ -35,31 +35,19 @@ public class UserInterface extends JFrame  {
         content.add(userPanel, BorderLayout.PAGE_START);
         content.add(board, BorderLayout.CENTER);
 
-         pack();
+        pack();
 
         userPanel.setBackground(Color.GRAY);
         board.setBackground(Color.BLACK);
 
         JButton startBtn = new JButton("START");
-        startBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                board.startGame();
-            }
-        });
+        startBtn.addActionListener(e -> board.startGame());
 
         JButton endBtn = new JButton("END");
-        endBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                board.endGame();
-            }
-        });
+        endBtn.addActionListener(e -> board.endGame());
 
         JButton stopBtn = new JButton("STOP");
-        stopBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                board.stopGame();
-            }
-        });
+        stopBtn.addActionListener(e -> board.stopGame());
 
         userPanel.add(startBtn);
         userPanel.add(endBtn);

@@ -25,9 +25,9 @@ public class Board extends JPanel implements SizeObject {
         this.height = height;
         this.width = width;
 
-        ball = new Ball(width/2,height/2,BALL_WIDTH,BALL_HEIGHT,-2, 2, Color.RED);
-        player = new Player(10 ,height/2,RACKET_WIDTH,RACKET_HEIGHT,0, 0, Color.WHITE);
-        ai = new Player(width-10 ,height/2,RACKET_WIDTH,RACKET_HEIGHT,0, 0, Color.WHITE);
+        ball = new Ball(width/2,height/2, BALL_WIDTH, BALL_HEIGHT,2, 2, Color.RED);
+        player = new Player(10 ,height/2, RACKET_WIDTH, RACKET_HEIGHT,0, 0, Color.WHITE);
+        ai = new Player(width-10 ,height/2, RACKET_WIDTH, RACKET_HEIGHT,0, 0, Color.WHITE);
 
         // Binding Keys
         InputMap im = this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
@@ -52,9 +52,9 @@ public class Board extends JPanel implements SizeObject {
         time = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ball.move(width, height, 10, 10, player.getX(), player.getY());
+                ball.move(width, height, ai.getX(), ai.getY(), player.getX(), player.getY());
                 player.move(width, height, 0, 10,0, 0);
-                ai.move(width, height, 0, 10,0, 0);
+                ai.move(width, height, 0, 10, ball.getX(), ball.getY());
                 repaint();
 
                 if(ball.leftWallCollide(width)) {

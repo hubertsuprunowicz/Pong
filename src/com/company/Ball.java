@@ -39,24 +39,32 @@ public class Ball extends InteractObject {
 
     /* Add player object */
     @Override
-    public void move(Integer boardWidth, Integer boardHeight, Integer _dx, Integer _dy, Integer playerX, Integer playerY) {
+    public void move(Integer boardWidth, Integer boardHeight, Integer aiX, Integer aiY, Integer playerX, Integer playerY) {
         x += dx;
         y += dy;
+
+        //TODO: add speedUp after hit with racket
 
         // Colliding with walls
         if( x+objWidth/2 > boardWidth || x-objWidth/2 < 0 ) { dx = -dx; }
         if( y+objHeight/2 > boardHeight || y-objHeight/2 < 0) { dy = -dy; }
 
-        // Colliding with Player:
+        // Colliding :
         // Right side of racket
-        if(     x - (objWidth/2) <= playerX + (SizeObject.RACKET_WIDTH) &&
-                y - (objHeight/2) <= playerY + (SizeObject.RACKET_HEIGHT/2) &&
-                y - (objHeight/2) >= playerY - (SizeObject.RACKET_HEIGHT/2)
-        ) {
+        if(     x - (objWidth/2) < playerX + (SizeObject.RACKET_WIDTH) &&
+                y < playerY + (SizeObject.RACKET_HEIGHT/2) &&
+                y > playerY - (SizeObject.RACKET_HEIGHT/2) )
             dx = -dx;
-            System.out.println("hit right side of racket");
-            // speedUP dx/dy
-        }
+
+
+        // Left side of racket dx = -dx
+        if(     x + (objWidth/2) > aiX - (SizeObject.RACKET_WIDTH) &&
+                y < aiY + (SizeObject.RACKET_HEIGHT/2) &&
+                y > aiY - (SizeObject.RACKET_HEIGHT/2) )
+            dx = -dx;
+
+        // Top side of racket dy = -dy, dx = -dx
+        // Bottom side of racket dy = -dy. dx = -dx
 
     }
 
