@@ -25,7 +25,7 @@ public class Board extends JPanel implements SizeObject {
         this.height = height;
         this.width = width;
 
-        ball = new Ball(width/2,height/2, BALL_WIDTH, BALL_HEIGHT,2, 2, Color.RED);
+        ball = new Ball(width/2,height/2, BALL_WIDTH, BALL_HEIGHT,-8, -8, Color.RED);
         player = new Player(10 ,height/2, RACKET_WIDTH, RACKET_HEIGHT,0, 0, Color.WHITE);
         ai = new Player(width-10 ,height/2, RACKET_WIDTH, RACKET_HEIGHT,0, 0, Color.WHITE);
 
@@ -69,6 +69,7 @@ public class Board extends JPanel implements SizeObject {
     }
 
     public void add(String item) {
+
         switch (item.toLowerCase()) {
             case "ball":
                 ball.setX(width/2);

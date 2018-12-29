@@ -32,6 +32,22 @@ public abstract class InteractObject implements SizeObject {
 
     public abstract void move(Integer boardWidth, Integer boardHeight, Integer dx, Integer dy, Integer pX, Integer pY);
 
+    public Integer leftSideOf(Integer x, Integer objWidth) {
+        return x-(objWidth/2);
+    }
+
+    public Integer rightSideOf(Integer x, Integer objWidth) {
+        return x+(objWidth/2);
+    }
+
+    public Integer topSideOf(Integer y, Integer objHeight) {
+        return y-(objHeight/2);
+    }
+
+    public Integer bottomSideOf(Integer y, Integer objHeight) {
+        return y+(objHeight/2);
+    }
+
     public Integer getX() { return this.x; }
     public Integer getY() { return this.y; }
 

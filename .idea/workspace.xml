@@ -4,16 +4,15 @@
     <list default="true" id="6bc12a73-e8de-4bbd-a115-9aa3e6ad9492" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Pong/com/company/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pong/com/company/Ball.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pong/com/company/Board$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pong/com/company/Board$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Pong/com/company/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pong/com/company/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pong/com/company/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pong/com/company/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pong/com/company/UserInterface$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pong/com/company/UserInterface$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pong/com/company/UserInterface$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pong/com/company/InteractObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pong/com/company/InteractObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pong/com/company/SizeObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pong/com/company/SizeObject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Pong/com/company/UserInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pong/com/company/UserInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/InteractObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/InteractObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/SizeObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/SizeObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/UserInterface.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -27,35 +26,36 @@
     <session id="1640677975">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
-          <entry key="project.open.time.12" value="2" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.12" value="3" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="5" />
-          <entry key="java" value="11752" />
+          <entry key="java" value="13458" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="11752" />
+          <entry key="JAVA" value="13458" />
           <entry key="PLAIN_TEXT" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="22" />
+          <entry key="java" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="22" />
+          <entry key="JAVA" value="23" />
         </counts>
       </usages-collector>
     </session>
@@ -65,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+            <state relative-caret-position="119">
+              <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -74,8 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/UserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="694">
-              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="238">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,13 +86,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="56" column="72" lean-forward="true" selection-start-line="56" selection-start-column="72" selection-end-line="56" selection-end-column="72" />
+            <state relative-caret-position="459">
+              <caret line="49" column="11" lean-forward="true" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1271#1443#0" expanded="true" />
-                <element signature="e#1442#1443#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/SizeObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -100,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/InteractObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-357">
-              <caret column="20" lean-forward="true" selection-start-column="20" selection-end-column="20" />
+            <state relative-caret-position="252">
+              <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -109,11 +116,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Ball.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="60" column="65" selection-start-line="60" selection-start-column="65" selection-end-line="60" selection-end-column="65" />
-              <folding>
-                <marker date="1545952761899" expanded="true" signature="1348:1559" ph="..." />
-              </folding>
+            <state relative-caret-position="303">
+              <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
             </state>
           </provider>
         </entry>
@@ -121,8 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+            <state relative-caret-position="425">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
@@ -151,12 +155,12 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/company/Panel.java" />
         <option value="$PROJECT_DIR$/src/com/company/Move.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/company/SizeObject.java" />
-        <option value="$PROJECT_DIR$/src/com/company/InteractObject.java" />
         <option value="$PROJECT_DIR$/src/com/company/Player.java" />
-        <option value="$PROJECT_DIR$/src/com/company/UserInterface.java" />
+        <option value="$PROJECT_DIR$/src/com/company/InteractObject.java" />
+        <option value="$PROJECT_DIR$/src/com/company/SizeObject.java" />
         <option value="$PROJECT_DIR$/src/com/company/Board.java" />
+        <option value="$PROJECT_DIR$/src/com/company/UserInterface.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/com/company/Ball.java" />
       </list>
     </option>
@@ -173,6 +177,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,11 +205,10 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545953134184" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546008460557" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -252,13 +256,13 @@
     <frame x="40" y="41" width="1840" height="970" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Structure" order="0" sideWeight="0.50119615" side_tool="true" weight="0.11011236" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.10898876" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.49880382" visible="true" weight="0.111235954" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32894737" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3361244" />
@@ -323,63 +327,58 @@
     <entry file="file://$PROJECT_DIR$/src/com/company/Move.java" />
     <entry file="file://$PROJECT_DIR$/src/com/company/AI.java" />
     <entry file="file://$PROJECT_DIR$/src/com/company/Racket.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/company/SizeObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/UserInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/InteractObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-357">
-          <caret column="20" lean-forward="true" selection-start-column="20" selection-end-column="20" />
+        <state relative-caret-position="252">
+          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/SizeObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="56" column="72" lean-forward="true" selection-start-line="56" selection-start-column="72" selection-end-line="56" selection-end-column="72" />
+        <state relative-caret-position="459">
+          <caret line="49" column="11" lean-forward="true" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1271#1443#0" expanded="true" />
-            <element signature="e#1442#1443#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/UserInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        <state relative-caret-position="425">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Ball.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="60" column="65" selection-start-line="60" selection-start-column="65" selection-end-line="60" selection-end-column="65" />
-          <folding>
-            <marker date="1545952761899" expanded="true" signature="1348:1559" ph="..." />
-          </folding>
+        <state relative-caret-position="303">
+          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
         </state>
       </provider>
     </entry>

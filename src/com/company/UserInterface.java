@@ -7,12 +7,16 @@ import java.awt.event.ActionListener;
 
 public class UserInterface extends JFrame  {
     private Container content;
+    private Integer width, height;
 
 
-    public UserInterface() {
+    public UserInterface(Integer width, Integer height) {
         super("Pong by Hubert Suprunowicz");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       // setResizable(false);
+        setResizable(false);
+
+        this.width = width;
+        this.height = height;
 
         /* Set app proportional to the user screen resolution */
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -30,7 +34,8 @@ public class UserInterface extends JFrame  {
         content.setBackground(Color.WHITE);
 
         JPanel userPanel = new JPanel();
-        Board board = new Board(300, 200);
+
+        Board board = new Board(width, height);
 
         content.add(userPanel, BorderLayout.PAGE_START);
         content.add(board, BorderLayout.CENTER);

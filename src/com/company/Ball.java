@@ -49,22 +49,23 @@ public class Ball extends InteractObject {
         if( x+objWidth/2 > boardWidth || x-objWidth/2 < 0 ) { dx = -dx; }
         if( y+objHeight/2 > boardHeight || y-objHeight/2 < 0) { dy = -dy; }
 
-        // Colliding :
-        // Right side of racket
-        if(     x - (objWidth/2) < playerX + (SizeObject.RACKET_WIDTH) &&
-                y < playerY + (SizeObject.RACKET_HEIGHT/2) &&
-                y > playerY - (SizeObject.RACKET_HEIGHT/2) )
-            dx = -dx;
 
+        // Racket's right = PLAYER
+        if(leftSideOf(x,objWidth) < rightSideOf(playerX,RACKET_WIDTH)) {
+            if (topSideOf(y, objHeight) > topSideOf(playerY, RACKET_HEIGHT) && bottomSideOf(y, objHeight) < bottomSideOf(playerY, RACKET_HEIGHT)) {
+                dx = -dx;
+                x++;
+            }
+        }
 
-        // Left side of racket dx = -dx
-        if(     x + (objWidth/2) > aiX - (SizeObject.RACKET_WIDTH) &&
-                y < aiY + (SizeObject.RACKET_HEIGHT/2) &&
-                y > aiY - (SizeObject.RACKET_HEIGHT/2) )
-            dx = -dx;
+        // Racket's left = AI
+        if(rightSideOf(x,objWidth) > leftSideOf(aiX,RACKET_WIDTH)) {
+            if (topSideOf(y, objHeight) > topSideOf(aiY, RACKET_HEIGHT) && bottomSideOf(y, objHeight) < bottomSideOf(aiY, RACKET_HEIGHT)) {
+                dx = -dx;
+                x--;
+            }
+        }
 
-        // Top side of racket dy = -dy, dx = -dx
-        // Bottom side of racket dy = -dy. dx = -dx
 
     }
 
