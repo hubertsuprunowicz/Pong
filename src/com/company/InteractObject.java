@@ -45,16 +45,16 @@ public abstract class InteractObject implements SizeObject {
         return y+(objHeight/2);
     }
 
-    public Integer getX() { return this.x; }
-    public Integer getY() { return this.y; }
-
-    public void setX(Integer x) { this.x = x; }
-    public void setY(Integer y) { this.y = y; }
-
-    public Integer getDx() { return this.dx; }
-    public Integer getDy() { return this.dy; }
-
-    public void setDx(Integer dx) { this.dx = dx; }
-    public void setDy(Integer dy) { this.dy = dy; }
+//    public Integer getX() { return this.x; }
+//    public Integer getY() { return this.y; }
+//
+//    public void setX(Integer x) { this.x = x; }
+//    public void setY(Integer y) { this.y = y; }
+//
+//    public Integer getDx() { return this.dx; }
+//    public Integer getDy() { return this.dy; }
+//
+//    public void setDx(Integer dx) { this.dx = dx; }
+//    public void setDy(Integer dy) { this.dy = dy; }
 
 }

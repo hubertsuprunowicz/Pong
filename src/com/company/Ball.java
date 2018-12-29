@@ -17,12 +17,11 @@ public class Ball extends InteractObject {
     }
 
     public Boolean rightWallCollide(Integer boardWidth) {
-        return ( x+objWidth/2 >= boardWidth) ? true : false;
-
+        return (x+objWidth/2 >= boardWidth);
     }
 
     public Boolean leftWallCollide(Integer boardWidth) {
-         return ( x-objWidth/2 <= 0 ) ? true : false;
+         return (x-objWidth/2 <= 0);
     }
 
     /* Add player object */

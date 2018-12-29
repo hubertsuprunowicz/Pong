@@ -11,7 +11,9 @@ public class Board extends JPanel implements SizeObject {
     private Timer time;
     private Ball ball;
     private Player player, ai;
-    private Integer playerY;
+
+    // To avoid moving the rocket until the game starts
+    private Integer tempPlayerY;
 
     /* get resolution from UI class*/
     private Integer width, height;
@@ -42,15 +44,13 @@ public class Board extends JPanel implements SizeObject {
         ap.put("up", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                player.setY( player.getY()-10 );
-//                player.dy = -10;
+                player.y -= 10;
             }
         });
         ap.put("down", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                player.setY( player.getY()+10 );
-//                player.dy = 10;
+                player.y += 10;
             }
         });
 
@@ -58,9 +58,9 @@ public class Board extends JPanel implements SizeObject {
         time = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ball.move(width, height, ai.getX(), ai.getY(), player.getX(), player.getY());
+                ball.move(width, height, ai.x, ai.y, player.x, player.y);
                 player.move(width, height, 0, 10,0, 0);
-                ai.move(width, height, 0, 10, ball.getX(), ball.getY());
+                ai.move(width, height, 0, 10, ball.x, ball.y);
                 repaint();
 
                 if(ball.leftWallCollide(width)) {
@@ -100,16 +100,16 @@ public class Board extends JPanel implements SizeObject {
 
         switch (item.toLowerCase()) {
             case "ball":
-                ball.setX(width/2);
-                ball.setY(height/2);
+                ball.x = width/2;
+                ball.y = height/2;
                 repaint();
                 break;
 
             case "player":
-                player.setX(10);
-                player.setY(height/2);
-                ai.setX(width-10);
-                ai.setY(height/2);
+                player.x = 10;
+                player.y = height/2;
+                ai. x = width-10;
+                ai.y = height/2;
                 repaint();
                 break;
 
@@ -125,13 +125,13 @@ public class Board extends JPanel implements SizeObject {
     }
 
     public void stopGame() {
-        this.playerY = player.getY();
+        tempPlayerY = player.y;
         time.stop();
     }
 
     public void startGame() {
         time.start();
-        player.setY( Objects.requireNonNullElse(this.playerY, player.getY()) );
+        player.y = Objects.requireNonNullElse(tempPlayerY, player.y);
     }
 
     public void endGame() {
@@ -141,6 +141,7 @@ public class Board extends JPanel implements SizeObject {
         ai.points = 0;
         rightScore.setText("0");
         leftScore.setText("0");
+        tempPlayerY = player.y;
         time.stop();
     }
 
@@ -161,7 +162,6 @@ public class Board extends JPanel implements SizeObject {
 
         this.width = getWidth();
         this.height = getHeight();
-
     }
 
 }
