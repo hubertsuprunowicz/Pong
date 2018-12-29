@@ -10,20 +10,23 @@ import java.util.Objects;
 public class Board extends JPanel implements SizeObject {
     private Timer time;
     private Ball ball;
-    private Player player;
-    private Player ai;
-
+    private Player player, ai;
     private Integer playerY;
 
     /* get resolution from UI class*/
-    private Integer width ;
-    private Integer height ;
+    private Integer width, height;
+
+    private JLabel leftScore;
+    private JLabel rightScore;
 
     Board(Integer width, Integer height) {
         super();
 
         this.height = height;
         this.width = width;
+
+        setLayout(new GridLayout(1,2));
+        buildScoreboard();
 
         ball = new Ball(width/2,height/2, BALL_WIDTH, BALL_HEIGHT,-8, -8, Color.RED);
         player = new Player(10 ,height/2, RACKET_WIDTH, RACKET_HEIGHT,0, 0, Color.WHITE);
@@ -39,15 +42,18 @@ public class Board extends JPanel implements SizeObject {
         ap.put("up", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                player.setY(player.getY()-10);
+                player.setY( player.getY()-10 );
+//                player.dy = -10;
             }
         });
         ap.put("down", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                player.setY(player.getY()+10);
+                player.setY( player.getY()+10 );
+//                player.dy = 10;
             }
         });
+
 
         time = new Timer(20, new ActionListener() {
             @Override
@@ -58,14 +64,36 @@ public class Board extends JPanel implements SizeObject {
                 repaint();
 
                 if(ball.leftWallCollide(width)) {
-                    endGame();
                     ai.points++;
+                    rightScore.setText(ai.points.toString());
+                    reset();
                 } else if(ball.rightWallCollide(width)) {
-                    endGame();
                     player.points++;
+                    leftScore.setText(player.points.toString());
+                    reset();
                 }
+
             }
         });
+    }
+
+    public void buildScoreboard() {
+
+        leftScore = new JLabel("0", SwingConstants.CENTER);
+        leftScore.setFocusable(false);
+        leftScore.setFont( new Font("SansSerif", Font.BOLD, height/2 + height/4));
+        leftScore.setBorder(null);
+        leftScore.setForeground(new Color(0.5f,0.5f,0.5f,.1f ));
+        leftScore.setBackground(new Color(0f,0f,0f,.0f ));
+        this.add(leftScore);
+
+        rightScore = new JLabel("0", SwingConstants.CENTER);
+        rightScore.setFocusable(false);
+        rightScore.setFont( new Font("SansSerif", Font.BOLD, height/2 +  height/4));
+        rightScore.setBorder(null);
+        rightScore.setForeground(new Color(0.5f,0.5f,0.5f,.1f ));
+        rightScore.setBackground(new Color(0f,0f,0f,.0f ));
+        this.add(rightScore);
     }
 
     public void add(String item) {
@@ -74,15 +102,14 @@ public class Board extends JPanel implements SizeObject {
             case "ball":
                 ball.setX(width/2);
                 ball.setY(height/2);
-               // repaint();
+                repaint();
                 break;
+
             case "player":
                 player.setX(10);
                 player.setY(height/2);
-
                 ai.setX(width-10);
                 ai.setY(height/2);
-
                 repaint();
                 break;
 
@@ -90,6 +117,11 @@ public class Board extends JPanel implements SizeObject {
                     // TRY CATCH EXCEPTION
                     break;
         }
+    }
+    private void reset() {
+        add("player");
+        add("ball");
+        time.stop();
     }
 
     public void stopGame() {
@@ -105,6 +137,10 @@ public class Board extends JPanel implements SizeObject {
     public void endGame() {
         add("player");
         add("ball");
+        player.points = 0;
+        ai.points = 0;
+        rightScore.setText("0");
+        leftScore.setText("0");
         time.stop();
     }
 

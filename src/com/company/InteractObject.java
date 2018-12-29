@@ -35,15 +35,12 @@ public abstract class InteractObject implements SizeObject {
     public Integer leftSideOf(Integer x, Integer objWidth) {
         return x-(objWidth/2);
     }
-
     public Integer rightSideOf(Integer x, Integer objWidth) {
         return x+(objWidth/2);
     }
-
     public Integer topSideOf(Integer y, Integer objHeight) {
         return y-(objHeight/2);
     }
-
     public Integer bottomSideOf(Integer y, Integer objHeight) {
         return y+(objHeight/2);
     }

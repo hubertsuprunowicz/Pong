@@ -17,24 +17,12 @@ public class Ball extends InteractObject {
     }
 
     public Boolean rightWallCollide(Integer boardWidth) {
+        return ( x+objWidth/2 >= boardWidth) ? true : false;
 
-        if( x+objWidth/2 >= boardWidth) {
-            System.out.println("hit right wall");
-
-            return true;
-        }
-
-        return false;
     }
 
     public Boolean leftWallCollide(Integer boardWidth) {
-
-        if( x-objWidth/2 <= 0 ) {
-            System.out.println("hit left wall");
-            return true;
-        }
-
-        return false;
+         return ( x-objWidth/2 <= 0 ) ? true : false;
     }
 
     /* Add player object */
@@ -42,8 +30,6 @@ public class Ball extends InteractObject {
     public void move(Integer boardWidth, Integer boardHeight, Integer aiX, Integer aiY, Integer playerX, Integer playerY) {
         x += dx;
         y += dy;
-
-        //TODO: add speedUp after hit with racket
 
         // Colliding with walls
         if( x+objWidth/2 > boardWidth || x-objWidth/2 < 0 ) { dx = -dx; }
