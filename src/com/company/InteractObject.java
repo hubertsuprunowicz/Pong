@@ -2,7 +2,7 @@ package com.company;
 
 import java.awt.*;
 
-public abstract class InteractObject implements SizeObject {
+public abstract class InteractObject {
     protected Integer x,y;
     protected Integer objWidth, objHeight;
     protected Integer dx, dy;
@@ -18,14 +18,24 @@ public abstract class InteractObject implements SizeObject {
         this.c = c;
     }
 
-    public InteractObject(Integer x, Integer y, Color c) {
+    public InteractObject(Integer x, Integer y, Integer objWidth, Integer objHeight, Integer dx, Integer dy) {
         this.x = x;
         this.y = y;
+        this.objWidth = objWidth;
+        this.objHeight = objHeight;
+        this.dx = dx;
+        this.dy = dy;
+        this.c = Color.WHITE;
+    }
+
+    public InteractObject() {
+        this.x = 0;
+        this.y = 0;
         this.objWidth = 0;
         this.objHeight = 0;
         this.dx = 0;
         this.dy = 0;
-        this.c = c;
+        this.c = Color.WHITE;
     }
 
     public void draw(Graphics g){ g.setColor(c); }

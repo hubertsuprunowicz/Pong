@@ -7,63 +7,89 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.Objects;
 
-public class Board extends JPanel implements SizeObject {
+public class Board extends JPanel {
     private Timer time;
     private Ball ball;
     private Player player, ai;
+
 
     // To avoid moving the rocket until the game starts
     private Integer tempPlayerY;
 
     /* get resolution from UI class*/
-    private Integer width, height;
+    private Integer boardWidth, boardHeight;
 
     private JLabel leftScore;
     private JLabel rightScore;
 
     Board(Integer width, Integer height) {
         super();
-
-        this.height = height;
-        this.width = width;
-
+        this.boardWidth = width;
+        this.boardHeight = height;
         setLayout(new GridLayout(1,2));
         buildScoreboard();
 
-        ball = new Ball(width/2,height/2, BALL_WIDTH, BALL_HEIGHT,-8, -8, Color.RED);
-        player = new Player(10 ,height/2, RACKET_WIDTH, RACKET_HEIGHT,0, 0, Color.WHITE);
-        ai = new Player(width-10 ,height/2, RACKET_WIDTH, RACKET_HEIGHT,0, 0, Color.WHITE);
+        //int startDx = ThreadLocalRandom.current().nextInt(-10, 10+1);l
+        final int PADDING = 10;
+        Integer ballWidth = boardWidth/100;
+        Integer ballHeight = ballWidth;
+        Integer racketWidth = 5;
+        Integer racketHeight = boardHeight/4;
+
+        ball = new Ball(boardWidth/2,boardHeight/2, ballWidth, ballHeight, new Direction(5).getDirection(), new Direction(5).getDirection());
+        player = new Player(PADDING,boardHeight/2, racketWidth, racketHeight, 0, 0);
+        ai = new Player(boardWidth - PADDING,boardHeight/2, racketWidth, racketHeight, 0, 0);
 
         // Binding Keys
         InputMap im = this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0, false), "up");
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0, false), "down");
 
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0, true), "upS");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0, true), "downS");
+
         // Actions taken for specified ID key
         ActionMap ap = this.getActionMap();
         ap.put("up", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                player.y -= 10;
+                player.dy = -8;
             }
         });
         ap.put("down", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                player.y += 10;
+                player.dy = 8;
+            }
+        });
+
+        ap.put("upS", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                player.dy = 0;
+            }
+        });
+        ap.put("downS", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                player.dy = 0;
             }
         });
 
 
-        time = new Timer(20, new ActionListener() {
+        time = new Timer(10, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //System.out.println(Math.sin(-1) + " " + Math.cos(-1));
+
+                ball.isMoving(player.dy);
                 ball.move(width, height, ai.x, ai.y, player.x, player.y);
                 player.move(width, height, 0, 10,0, 0);
                 ai.move(width, height, 0, 10, ball.x, ball.y);
+
                 repaint();
 
-                if(ball.leftWallCollide(width)) {
+                if(ball.leftWallCollide()) {
                     ai.points++;
                     rightScore.setText(ai.points.toString());
                     reset();
@@ -72,16 +98,14 @@ public class Board extends JPanel implements SizeObject {
                     leftScore.setText(player.points.toString());
                     reset();
                 }
-
             }
         });
     }
 
-    public void buildScoreboard() {
-
+    private void buildScoreboard() {
         leftScore = new JLabel("0", SwingConstants.CENTER);
         leftScore.setFocusable(false);
-        leftScore.setFont( new Font("SansSerif", Font.BOLD, height/2 + height/4));
+        leftScore.setFont( new Font("SansSerif", Font.BOLD, boardHeight/2 + boardHeight/4));
         leftScore.setBorder(null);
         leftScore.setForeground(new Color(0.5f,0.5f,0.5f,.1f ));
         leftScore.setBackground(new Color(0f,0f,0f,.0f ));
@@ -89,35 +113,37 @@ public class Board extends JPanel implements SizeObject {
 
         rightScore = new JLabel("0", SwingConstants.CENTER);
         rightScore.setFocusable(false);
-        rightScore.setFont( new Font("SansSerif", Font.BOLD, height/2 +  height/4));
+        rightScore.setFont( new Font("SansSerif", Font.BOLD, boardHeight/2 +  boardHeight/4));
         rightScore.setBorder(null);
         rightScore.setForeground(new Color(0.5f,0.5f,0.5f,.1f ));
         rightScore.setBackground(new Color(0f,0f,0f,.0f ));
         this.add(rightScore);
     }
 
-    public void add(String item) {
-
+    private void add(String item) {
         switch (item.toLowerCase()) {
             case "ball":
-                ball.x = width/2;
-                ball.y = height/2;
+                ball.x = boardWidth/2;
+                ball.y = boardHeight/2;
+                ball.dx = new Direction(5).getDirection();
+                ball.dy = new Direction(5).getDirection();
                 repaint();
                 break;
 
             case "player":
                 player.x = 10;
-                player.y = height/2;
-                ai. x = width-10;
-                ai.y = height/2;
+                player.y = boardHeight/2;
+                ai. x = boardWidth-10;
+                ai.y = boardHeight/2;
                 repaint();
                 break;
 
-                default:
-                    // TRY CATCH EXCEPTION
-                    break;
+            default:
+                // TRY CATCH EXCEPTION
+                break;
         }
     }
+
     private void reset() {
         add("player");
         add("ball");
@@ -148,7 +174,7 @@ public class Board extends JPanel implements SizeObject {
     @Override
     public Dimension getPreferredSize() {
         // After rendering panel is getting minus 26 of initialised size
-        return new Dimension(this.width,this.height + 26);
+        return new Dimension(this.boardWidth,this.boardHeight + 26);
     }
 
     @Override
@@ -157,11 +183,11 @@ public class Board extends JPanel implements SizeObject {
         ball.draw(g);
         player.draw(g);
         ai.draw(g);
-        g.drawLine(width/2,0,width/2,height);
-        g.drawOval(width/2 - width/8, height/2 - height/4, width/4, height/2);
+        g.drawLine(boardWidth/2,0,boardWidth/2, boardHeight);
+        g.drawOval(boardWidth/2 - boardWidth/8, boardHeight/2 - boardHeight/4, boardWidth/4, boardHeight/2);
 
-        this.width = getWidth();
-        this.height = getHeight();
+        this.boardWidth = getWidth();
+        this.boardHeight = getHeight();
     }
 
 }
